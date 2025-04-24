@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="placas.css">
+    <title>Placas</title>
+</head>
+<body>
+        <h1 class="plave">Información de Vehículos</h1>
+        <div class="contenedor">
+
+        <label class="plave" for="unidadP">NO. De Unidad:</label>
+        <input type="tel" id="unidadP" inputmode="numeric" pattern="[0-9]*" required>
+        <button id="buscarBtn" onclick="buscarVehiculo()">Buscar</button>
+        <p id="resultadoP">--------------------------------</p>
+
+        <label for="">AGREGAR NUEVA UNIDAD:</label>
+        <label class="plave" for="Nounidad">Numero De Unidad:</label>
+        <input type="tel" id="Nounidad" inputmode="numeric" pattern="[0-9]*" required>
+        <label class="plave" for="Placaunidad">Placas:</label>
+        <input type="text" id="Placaunidad">
+        
+        <label class="plave" for="Vehiunidad">Vehiculo:</label>
+        <input type="text" id="Vehiunidad" list="carros">
+        <datalist id="carros">
+            <option value="Hormiga"></option>
+            <option value="Rabón"></option>
+            <option value="Tortón"></option>
+            <option value="Nissan"></option>
+            <option value="Planas"></option>
+        </datalist>
+        <button id="agregarBtn" onclick="buscarVehiculo()">Agregar</button>
+        <p>--------------------------------</p>
+
+        <label for="">BORAR UNIDAD: </label>
+        <label class="plave" for="Borrarunidad">Vehiculo:</label>
+        <input type="tel" name="" id="Borrarunidad">
+        <button id="borrarBtn" onclick="buscarVehiculo()">Borrar</button>
+
+    </div>
+
+    <script>
+        const placas={}
+    function buscarVehiculo() {
+        const ingreso = document.getElementById('unidadP').value;
+        const resultado = placas[ingreso] || "No se encuentra en la lista";
+        document.getElementById('resultadoP').innerHTML = "Resultado: <br>" + resultado;
+    }
+
+document.getElementById('unidadP').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevenir la acción predeterminada de enviar formulario
+        document.getElementById('buscarBtn').click();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            buscarVehiculo();
+        }
+    });
+});
+
+</script>
+
+    
+</body>
+</html>
